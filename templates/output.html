@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='images/favicon.png')}}">
+    <title>Ai Direct</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+</head>
+<body>
+  <div class="container">
+      <div class="header">
+          <a href="{{ url_for('index') }}"><h1>Ai Direct</h1></a>
+      </div>
+      <form class="search" action="{{ url_for('add_prompt') }}" method="POST">
+          <input type="text" name="prompt" id="prompt" placeholder="What's on your mind??">
+          <button type = "submit" value="submit" name="submit">Generate...</button>
+      </form>
+      <h2 class="output--prompt">{{props.prompt}}</h2>
+      <div class="output">
+          <img src="{{ url_for('static', filename=props.main_image) }}" alt="Generated GIF" />
+      </div>
+      <div class="transcript">
+          <div class="div">
+              <h3>Transcript: </h3>
+              <div class="story">
+                  {% for scene in props.story %}
+                        <p class="scene" style="font-size:25px;">{{scene}}</p>
+                  {% endfor %}
+              </div>
+          </div>
+          <div class="transcript--images">
+              <h3>Generated Images: </h3>
+              <div class="transcript--img">
+                  {% for image in props.images %}
+                    <img src="{{ url_for('static', filename=image) }}" alt="Generated Images"/>
+              {% endfor %}
+              </div>
+          </div>
+      </div>
+  </div>
+</body>
+</html>

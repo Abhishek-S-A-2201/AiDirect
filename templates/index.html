@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='images/favicon.png')}}">
+     <title>
+
+
+
+        AiDirect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+</head>
+<body>
+    {% if error %}
+        <p class="error"><strong>Error</strong>: {{error}}</p>
+    {% endif %}
+  <div class="container">
+      <div class="header">
+          <a href="{{ url_for('index') }}"><h1>Ai Direct</h1></a>
+      </div>
+      <form class="search" action="{{ url_for('add_prompt') }}" method="POST">
+          <input type="text" name="prompt" id="prompt" placeholder="What's on your mind??">
+          <button type = "submit" value="submit" name="submit">Generate...</button>
+      </form>
+      <div class="images">
+          <div class="big"><img src="{{url_for('static', filename='gifs/sample2.webp')}}" alt="Exaple GIF" /></div>
+          <div><img src="{{url_for('static', filename='gifs/sample1.gif')}}" alt="Exaple GIF" /></div>
+          <div class="big"><img src="{{url_for('static', filename='gifs/sample6.gif')}}" alt="Exaple GIF" /></div>
+          <div><img src="{{url_for('static', filename='gifs/sample3.gif')}}" alt="Exaple GIF" /></div>
+          <div><img src="{{url_for('static', filename='gifs/sample4.gif')}}" alt="Exaple GIF" /></div>
+          <div><img src="{{url_for('static', filename='gifs/sample5.gif')}}" alt="Exaple GIF" /></div>
+      </div>
+      <div class="footer">
+          <p></p>
+      </div>
+  </div>
+</body>
+</html>
